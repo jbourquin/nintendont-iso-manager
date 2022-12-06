@@ -44,8 +44,12 @@ def main():
     # Iterate through each object to determine if it is a directory or game file
     for item in game_dir_content:
 
+        # Ignore hidden files and directories
+        if item.name.startswith('.'):
+            continue
+        
         # Check to see if the item is a game file directory
-        if item.is_dir():
+        elif item.is_dir():
             
             # Check to see if the directory contains a game.iso file
             game_files = list(item.glob('game.iso'))
